@@ -23,7 +23,7 @@ namespace DeviceMonitorTests
             mock = new Mock<IMQClient>();
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterInstance(mock.Object).As<IMQClient>();
-            IOCController._container = containerBuilder.Build();
+            IOCController.Container = containerBuilder.Build();
         }
 
         [Fact]

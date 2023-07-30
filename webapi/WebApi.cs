@@ -35,8 +35,9 @@ topics.Add(new Topic
 }
 );
 //IOC Controller to execute MQClient
-IOCController.RegisterImplementations();
-var mqclient = IOCController.GetResolver<IMQClient>();
+var iocController = IOCController.Instance;
+iocController.RegisterImplementations();
+var mqclient = iocController.GetResolver<IMQClient>();
 bool isConnected = await mqclient.Connect();
 if (isConnected)
 {

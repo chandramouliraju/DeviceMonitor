@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Core;
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using webapi.Interfaces;
 using webapi.MQTT;
 
@@ -7,21 +9,36 @@ namespace webapi
 {
     public class IOCController
     {
-        public static IContainer _container { get; set; }
+        private static volatile IOCController _instance;
+        //for the sake of unit testing
+        public static IContainer Container { get; set; }
 
-        public static void RegisterImplementations()
+
+        public static IOCController Instance 
         {
-            if (_container == null)
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                if(_instance == null)
+                {
+                    _instance = new IOCController();
+                }
+                return _instance;
+            }
+        }
+        public void RegisterImplementations()
+        {
+            if (Container == null)
             {
                 var builder = new ContainerBuilder();
                 builder.RegisterType<MQClient>().As<IMQClient>().SingleInstance();
-                _container = builder.Build();
+                Container = builder.Build();
             }
         }
 
-        public static T GetResolver<T>()
+        public T GetResolver<T>()
         {
-            using (var scope = _container.BeginLifetimeScope())
+            using (var scope = Container.BeginLifetimeScope())
             {
                 return scope.Resolve<T>();
             }
