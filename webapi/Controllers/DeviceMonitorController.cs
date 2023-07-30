@@ -19,8 +19,7 @@ public class DeviceMonitorController : ControllerBase
 
     [HttpGet(Name = "GetDeviceMonitor")]
     public IEnumerable<ViewMessage> GetDeviceMonitor()
-    {
-        IOCController.RegisterImplementations();
+    { 
         var mqClient = IOCController.GetResolver<IMQClient>();
         List<PublishMessage> messagesFromMQTT = mqClient.GetMessages();
         List<ViewMessage> messagesToShow = new List<ViewMessage>();

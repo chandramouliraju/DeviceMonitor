@@ -7,7 +7,7 @@ namespace webapi
 {
     public class IOCController
     {
-         static IContainer _container;
+        public static IContainer _container { get; set; }
 
         public static void RegisterImplementations()
         {
@@ -26,5 +26,6 @@ namespace webapi
                 return scope.Resolve<T>();
             }
         }
+
     }
 }

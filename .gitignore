@@ -1,6 +1,8 @@
 .DS_Store
 webapi/bin
 webapi/obj
+DeviceMonitorTests/bin
+DeviceMonitorTests/obj
 
 
 # Editor directories and files
