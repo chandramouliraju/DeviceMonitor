@@ -2,6 +2,7 @@
 using HiveMQtt.Client.Events;
 using HiveMQtt.Client.Options;
 using HiveMQtt.MQTT5.Types;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using webapi.Interfaces;
 using webapi.Model;
@@ -13,8 +14,8 @@ namespace webapi.MQTT
     {
         HiveMQClient _client;
 
-        List<Message> _messages = new List<Message>();
-        TaskCompletionSource<Message> _taskCompletionSource = new TaskCompletionSource<Message>(TaskCreationOptions.RunContinuationsAsynchronously);
+        List<PublishMessage> _messages = new List<PublishMessage>();
+        TaskCompletionSource<PublishMessage> _taskCompletionSource = new TaskCompletionSource<PublishMessage>(TaskCreationOptions.RunContinuationsAsynchronously);
         public async Task<bool> Connect()
         {
             if (_client == null)
@@ -65,11 +66,10 @@ namespace webapi.MQTT
         {
             if (sender is not null) {
 
-                var message = new Message
+                var message = new PublishMessage
                 {
                     Topic = args.PublishMessage.Topic,
-                    Payload = args.PublishMessage.PayloadAsString,
-                    TimeStamp = DateTime.Now.ToString()
+                    Payload = JsonConvert.DeserializeObject<Payload>(args.PublishMessage.PayloadAsString),
 
                 };
                 _messages.Add(message);
@@ -77,7 +77,7 @@ namespace webapi.MQTT
             }
         }
 
-        public List<Message> GetMessages()
+        public List<PublishMessage> GetMessages()
         {
             return _messages;
         }

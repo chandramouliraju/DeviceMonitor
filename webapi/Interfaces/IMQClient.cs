@@ -12,7 +12,7 @@ namespace webapi.Interfaces
 
         Task<bool> SubscribeTopic(List<Topic> topics);
 
-        List<Message> GetMessages();
+        List<PublishMessage> GetMessages();
 
     }
 }

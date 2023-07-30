@@ -18,25 +18,29 @@ public class DeviceMonitorController : ControllerBase
     }
 
     [HttpGet(Name = "GetDeviceMonitor")]
-    public IEnumerable<Message> GetDeviceMonitor()
+    public IEnumerable<ViewMessage> GetDeviceMonitor()
     {
         IOCController.RegisterImplementations();
         var mqClient = IOCController.GetResolver<IMQClient>();
-        List<Message> messages = mqClient.GetMessages();
+        List<PublishMessage> messagesFromMQTT = mqClient.GetMessages();
+        List<ViewMessage> messagesToShow = new List<ViewMessage>();
 
-        if(messages.Count==0)
+        if(messagesFromMQTT.Count > 0)
         {
-            var message = new Message
+            foreach(var message in messagesFromMQTT)
             {
-                Topic = "Empty Topic",
-                DeviceId = "NA",
-                TimeStamp = DateTime.Now.ToString(),
-                Payload = "Empty Payload"
-            };
-            messages.Add(message);
+                var messageToShow = new ViewMessage
+                {
+                    Topic = message.Topic,
+                    DeviceId = message.Payload.DeviceId,
+                    DateTime = message.Payload.DateTime.ToString(),
+                    Measurement = message.Payload.Measurement + message.Payload.UnitOfMeasurement,
+                };
+                messagesToShow.Add(messageToShow);
+            }
+            messagesToShow = messagesToShow.OrderBy(m => m.DateTime).ToList();
         }
-
-        return mqClient.GetMessages().ToArray();
+        return messagesToShow.ToArray();
 
     }
 }

@@ -1,14 +1,10 @@
 ﻿namespace webapi.Model
 {
-    public class Message
+    public class ViewMessage
     {
         public string Topic { get; set; }
-
         public string DeviceId { get; set; }
-
-        public string TimeStamp { get; set; }
-
-        public string Payload { get; set; }
+        public string DateTime { get; set; }
+        public String Measurement { get; set; }
     }
-
 }

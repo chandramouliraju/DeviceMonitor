@@ -1,0 +1,13 @@
+.DS_Store
+webapi/bin
+webapi/obj
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
