@@ -34,9 +34,9 @@ A Web application that connects to MQTT Broker and subscribes to topics like tem
   - Sensor Setup
     - Open the URL, Navigate to Settings->Add-Ons->Search for **File editor**-> select **File editor** and install
     - Once installed, File editor will be available in the URL as lefthand side menu.
-    ![Screenshot 2023-07-31 213610](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/0568bbf6-7606-42e8-a68e-1aeb89d59885)
+       - ![Screenshot 2023-07-31 213610](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/0568bbf6-7606-42e8-a68e-1aeb89d59885)
     - Select the File Editor and open configuration yaml
-    ![configurationYaml](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/93820d40-6276-4e90-9247-ccc23917ec74)
+      - ![configurationYaml](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/93820d40-6276-4e90-9247-ccc23917ec74)
     - Setup the Sensors Configuration like below
     
         
