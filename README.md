@@ -22,8 +22,8 @@ A Web application that connects to MQTT Broker and subscribes to topics like tem
 7. C# - Programming Language
 
 ### Steps to Setup Environment - Windows OS
-1. Home Assistant OS
-  - Installation
+- Home Assistant OS
+   - Installation
     - Install HyperV using the link below
        - https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
     - Install Home Assistant Disk Image using the link below
@@ -42,60 +42,61 @@ A Web application that connects to MQTT Broker and subscribes to topics like tem
   - Broker Configuration - Post Step 2
     - Setup the MQTT Broker using Link below
         - https://www.home-assistant.io/integrations/mqtt/
-2. HiveMQ -
-  - Download - https://www.hivemq.com/downloads/hivemq/
-  - Start Server
-    - Unzip HiveMQ zip
-    - open bin folder
-    - right click **run.bat** and **run as administrator**
-  - Follow Broker Configuration in Step 1
-3. Configure Topic
+- HiveMQTT
+   - Download - https://www.hivemq.com/downloads/hivemq/
+      - Start Server
+        - Unzip HiveMQ zip
+        - open bin folder
+        - right click **run.bat** and **run as administrator**
+      - Follow Broker Configuration in Step 1
+- Configure Topic
   - Goto URL - http://homeassistant.local:8123/
-  - Select **Settings** on lefthand side menu
-  - Select **Devices & Services** on the dashboard
-  - Select **MQTT** on the **Integrations** tab
-  - Select **Configure** under **Integration entries**
-  - Publish a Packet - Temperature Sensor
-    - Topic - **home/sensor/temperature**
-    - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
-    - Payload -
-        **{
-          "measurement":"25",
-          "unitOfMeasurement": "{{ state_attr('sensor.temperature','unit_of_measurement') }}",
-          "deviceId": "{{ device_id('sensor.temperature') }}",
-          "dateTime": "{{ now().isoformat()  }}"
-         }**
-  - Publish a Packet - Humidity Sensor
-    - Topic - **home/sensor/humidity**
-    - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
-    - Payload -
-        **{
-          "measurement":"25",
-          "unitOfMeasurement": "{{ state_attr('sensor.humidity','unit_of_measurement') }}",
-          "deviceId": "{{ device_id('sensor.humidity') }}",
-          "dateTime": "{{ now().isoformat()  }}"
-         }**
-   - Publish a Packet - Brightness Sensor
-    - Topic - **home/sensor/brightness**
-    - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
-    - Payload -
-        **{
-          "measurement":"25",
-          "unitOfMeasurement": "{{ state_attr('sensor.brightness','unit_of_measurement') }}",
-          "deviceId": "{{ device_id('sensor.brightness') }}",
-          "dateTime": "{{ now().isoformat()  }}"
-         }**
-   - You can check the published topics are printing the correct data by start listening to the same topic
-       - Under **Listen to a topic**
-       - Enter the topic to subscribe of any one from above 3 topics
-       - Select **Start Listening**
-  4.  WebApp - to Monitor the messages in browser
+    - Select **Settings** on lefthand side menu
+    - Select **Devices & Services** on the dashboard
+    - Select **MQTT** on the **Integrations** tab
+    - Select **Configure** under **Integration entries**
+    - Publish a Packet - Temperature Sensor
+      - Topic - **home/sensor/temperature**
+      - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
+      - Payload -
+          **{
+            "measurement":"25",
+            "unitOfMeasurement": "{{ state_attr('sensor.temperature','unit_of_measurement') }}",
+            "deviceId": "{{ device_id('sensor.temperature') }}",
+            "dateTime": "{{ now().isoformat()  }}"
+           }**
+    - Publish a Packet - Humidity Sensor
+      - Topic - **home/sensor/humidity**
+      - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
+      - Payload -
+          **{
+            "measurement":"25",
+            "unitOfMeasurement": "{{ state_attr('sensor.humidity','unit_of_measurement') }}",
+            "deviceId": "{{ device_id('sensor.humidity') }}",
+            "dateTime": "{{ now().isoformat()  }}"
+           }**
+     - Publish a Packet - Brightness Sensor
+      - Topic - **home/sensor/brightness**
+      - Select **Allow Template** - This is to get the functions to get device id and unit of measurement to automatically populate from configuration.yaml and timestamp from system
+      - Payload -
+          **{
+            "measurement":"25",
+            "unitOfMeasurement": "{{ state_attr('sensor.brightness','unit_of_measurement') }}",
+            "deviceId": "{{ device_id('sensor.brightness') }}",
+            "dateTime": "{{ now().isoformat()  }}"
+           }**
+     - You can check the published topics are printing the correct data by start listening to the same topic
+         - Under **Listen to a topic**
+         - Enter the topic to subscribe of any one from above 3 topics
+         - Select **Start Listening**
+- Webapp - to Monitor the messages in browser
      - Checkout the code from branch feature/develop
      - Open the DeviceMonitor.sln using Visual Studio
      - Make sure the startup projects are chosen as Multiple Projects Both WebApi and vueapp
      - Press Start
      - Publish the packet from step 3
      - Refresh the Webapp to get the latest message published.
+    
     
     
      
