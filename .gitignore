@@ -4,12 +4,10 @@ webapi/obj
 DeviceMonitorTests/bin
 DeviceMonitorTests/obj
 
-
 # Editor directories and files
 .idea
 .vscode
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?
