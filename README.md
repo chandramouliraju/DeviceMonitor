@@ -48,6 +48,7 @@ A Web application that connects to MQTT Broker and subscribes to topics like tem
         - Unzip HiveMQ zip
         - open bin folder
         - right click **run.bat** and **run as administrator**
+        - Broker should be installed in port 1883 by default
       - Follow Broker Configuration in Step 1
 - Configure Topic
   - Goto URL - http://homeassistant.local:8123/
