@@ -32,7 +32,7 @@ A Web application that connects to IOT dummy sensor hosted in Home Assistant OS 
     - Select the File Editor and open configuration yaml
       - ![configurationYaml](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/93820d40-6276-4e90-9247-ccc23917ec74)
     - Setup the Sensors Configuration like the configuration.yaml available in the Github project
-      - ![sensors](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/3b3456c6-9632-43ab-90d8-b9c1ab3824e4 
+      - ![sensors](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/3b3456c6-9632-43ab-90d8-b9c1ab3824e4)
   - Broker Configuration - Post Step 2
     - Setup the MQTT Broker using Link below
         - https://www.home-assistant.io/integrations/mqtt/
