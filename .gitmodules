@@ -1,0 +1,3 @@
+[submodule "vueapp"]
+	path = vueapp
+	url = https://github.com/chandramouliraju/DeviceMonitorVueApp.git

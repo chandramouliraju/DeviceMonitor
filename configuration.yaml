@@ -1,0 +1,68 @@
+homeassistant:
+  name: Home
+  latitude: 50.075539
+  longitude: 14.437800
+  unit_system: metric
+  time_zone: Europe/Prague
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+# Example configuration.yaml entry
+mqtt:
+  binary_sensor:
+    - name: "Window Contact Sensor"
+      state_topic: "home-assistant/window/contact"
+      payload_on: "ON"
+      availability:
+        - topic: "home-assistant/window/availability"
+          payload_available: "online"
+          payload_not_available: "offline"
+          value_template: "{{ device_id('Window Contact Sensor') }}"
+      qos: 2
+      device_class: opening
+      value_template: "{{ value_json.state }}"
+  switch:
+    - unique_id: bedroom_switch
+      name: "Bedroom Switch"
+      state_topic: "home/bedroom/switch1"
+      command_topic: "home/bedroom/switch1/set"
+      availability:
+        - topic: "home/bedroom/switch1/available"
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false
+      qos: 0
+      retain: true
+  sensor:
+    - name: "Temperature"
+      unique_id: "20160101"
+      device:
+        identifiers: "temperature123"
+      state_topic: "home/sensor/temperature"
+      suggested_display_precision: 1
+      unit_of_measurement: "°C"
+      value_template: "{{ value_json.temperature }}"
+    - name: "Humidity"
+      unique_id: "20170101"
+      device:
+        identifiers: "humidity123"
+      state_topic: "home/sensor/humidity"
+      unit_of_measurement: "%"
+      value_template: "{{ value_json.humidity }}"
+    - name: "Brightness"
+      unique_id: "20180101"
+      device:
+        identifiers: "brightness123"
+      state_topic: "home/sensor/brightness"
+      unit_of_measurement: "%"
+      value_template: "{{ value_json.brightness }}"
+      
