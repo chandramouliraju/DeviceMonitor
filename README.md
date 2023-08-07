@@ -1,13 +1,7 @@
 # DeviceMonitor Project
 
-## Requirement
-To Monitor devices that are sending data to me
-1. Each device has a unique name
-2. Each device sends measurement
-3. Solution should be in C#
-
-## Solution
-A Web application that connects to MQTT Broker and subscribes to topics like temperature, humidity, and brightness sensors. Sensors publish data to the MQTT broker and a Web application that subscribes to the same topic will be retrieved and shown to the user.
+## Overview
+A Web application that connects to IOT dummy sensor hosted in Home Assistant OS via MQTT Broker powered by HiveMQ and .NET client provided by HiveMQ to monitor the topics subscribed to the client and shows them to user as report. The report is designed by Vue.js
 
 ## Design Architecture
 ![SolutionArchitecture](https://github.com/chandramouliraju/DeviceMonitor/assets/32584364/3df213a1-6d53-4387-a859-32ba1d544908)
